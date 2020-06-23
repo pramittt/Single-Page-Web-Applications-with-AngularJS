@@ -7,16 +7,22 @@
           $scope.totalValue="";
 
           $scope.displayNumeric=function(){
-            var score = $scope.name.split(",").length;
+            var score = $scope.name;
             $scope.totalValue = calculateNumericForString(score);
           };
           
           function calculateNumericForString(total){
 
-            if(total>3)
-              return "Too much";
+            if(!total)
+              return "Please enter data first";
             else
-              return "Enjoy!"; 
+              {
+                  total=total.split(",").length;
+                  if(total<4)
+                     return "Enjoy!";
+                  else
+                     return "Too much!";
+              } 
 
           }
 
